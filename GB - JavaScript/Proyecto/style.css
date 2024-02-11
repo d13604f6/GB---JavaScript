@@ -1,0 +1,4 @@
+console.log("¡Hola! Estás imprimiendo un mensaje por consola");
+
+let userInput = prompt("Please enter some text:");
+console.log("You entered: " + userInput);
