@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>Egg App</title><title>Egg App :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="sepia" data-font="sans-serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://app.egg.live/content/step/7w73tUrlVejVSasDR1fkAg">
+    <span>app.egg.live</span>
+    <span>/content/step/7w73tUrlVejVSasDR1fkAg</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Egg App</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">5-6 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div><header><h2>Práctica: Iniciando con Objetos</h2><nav></nav></header><p>Vamos a practicar con la creación de objetos a través de los siguientes ejercicios que proponemos a continuación.</p><p>❗ Importante: Para poder llevar a cabo los ejercicios tendrás que apoyarte en la teoría.</p><blockquote><p><b>💡 TIP : Para visualizar lo que estamos haciendo tenemos diferentes opciones. Pero una de ellas es poder crear un archivo index.html, asociar el archivo javascript y luego ver en el navegador de la consola lo que estamos haciendo. O utilizar document.write(“algo”), para verlo en el archivo.</b></p></blockquote><p><img src="https://images.ctfassets.net/lg4qnzuw6s7g/2iIP1AOzEYoW6Ts0SgoY1O/ab26025bb65e453473b36a26af6ae47d/Screenshot_2.png" alt="Screenshot 2"></p><h3><b>✏️ </b><b><u>Actividad Crear un objeto "Persona"</u></b></h3><ol><li><p>Crea un objeto llamado "persona" que tenga las siguientes propiedades: nombre, edad, ciudad y profesión. Luego, agrega un método llamado "saludar".</p></li><li><p>Deberás instanciar al objeto y llamar al método saludar para que imprima en la consola el saludo utilizando los datos del objeto.</p></li></ol><hr><h3><b>✏️ </b><b><u>Actividad Crear un objeto "Libro"</u></b></h3><ol><li><p>Crea un objeto llamado "libro" que tenga las siguientes propiedades: título, autor, año de publicación y género. Luego, agrega un método llamado "información" que imprima en la consola la información del libro utilizando los datos del objeto.</p></li><li><p>Deberás instanciar al objeto y llamar al método información para que imprima en la consola los datos utilizando los atributos del objeto.</p></li></ol><hr><h3><b>✏️ </b><b><u>Actividad Getters y Setters</u></b></h3><p>Crea una clase llamada <b>Círculo </b>que represente un círculo. La clase debe tener las siguientes características:</p><ul><li><p>Debe tener un constructor que acepte el radio del círculo como parámetro y lo almacene en una propiedad interna protegida.</p></li><li><p>Implementa un getter llamado <b>radio </b>que retorne el valor del radio del círculo.</p></li><li><p>Implementa un setter llamado <b>radio </b>que permita cambiar el radio del círculo. El setter debe validar que el nuevo radio sea un valor positivo y, en caso contrario, mostrar un mensaje de error en la consola.</p></li><li><p>Implementa un getter llamado área que calcule y retorne el área del círculo.</p></li><li><p>Implementa un getter llamado <b>circunferencia </b>que calcule y retorne la circunferencia del círculo.</p></li></ul><p>Una vez que hayas definido la clase Circle con los getters y setters adecuados, crea una instancia de la clase, establece un radio inicial y muestra por consola el radio, el área y la circunferencia del círculo. Luego, cambia el radio utilizando el setter y vuelve a mostrar los resultados del radio, el área y la circunferencia con el nuevo valor</p><blockquote><p><i>💡Recuerda utilizar el prefijo "_" para indicar que las propiedades del radio son protegidas y solo se pueden acceder y modificar a través de los getters y setters.</i></p></blockquote><p>Te dejamos una captura de pantalla de cómo deberían verse las pruebas que realizamos en Visual Studio Code</p><p><img src="https://images.ctfassets.net/lg4qnzuw6s7g/7cV7NEoQuFETS3A0r05tuq/1436fce9785961e7c0ef86ff348b97c1/Screenshot_3.png" alt="Screenshot 3"></p><hr><h3><b>✏️ </b><b><u>Actividad Empresa de celulares</u></b></h3><p>Una empresa de tecnología desea llevar un registro de los diferentes modelos de celulares que ofrece. Para ello, han creado una clase llamada "celular" que representa las características de un teléfono móvil. La clase cuenta con los siguientes atributos:</p><ul><li><p>color: el color del celular.</p></li><li><p>peso: el peso del celular en gramos.</p></li><li><p>rdp: la resolución de la pantalla del celular en pulgadas.</p></li><li><p>rdc: la resolución de la cámara del celular en megapíxeles.</p></li><li><p>ram: la capacidad de memoria RAM del celular en gigabytes.</p></li><li><p>encendido: un booleano que indica si el celular está encendido (true) o apagado (false).</p></li></ul><p>Además, la clase tiene los siguientes métodos:</p><ul><li><p><b>btnEncendido()</b>: si el celular está apagado, este método lo enciende y muestra una alerta indicando que se está encendiendo. Si ya está encendido, muestra una alerta informando que el celular ya está encendido.</p></li><li><p><b>btnReiniciar():</b> si el celular está encendido, este método lo reinicia y muestra una alerta indicando que se está reiniciando. Si el celular está apagado, muestra una alerta informando que no se puede reiniciar porque está apagado.</p></li><li><p><b>tomarFoto()</b>: este método muestra en pantalla un mensaje indicando que se ha tomado una foto con la resolución de la cámara del celular.</p></li><li><p><b>mostrarInfo():</b> este método devuelve un texto con las características principales del celular, como el color, el peso y la cantidad de memoria RAM.</p></li></ul><p><b>Tu tarea es crear tres instancias de la clase "celular" con sus respectivos datos y una vez creados los celulares, deberás realizar las siguientes acciones:</b></p><p>a) Enciende el Celular.</p><p>b) Reinicia el Celular .</p><p>c) Toma una foto.&nbsp;</p><p>c) Muestra en pantalla la información del Celular.</p><p>Recuerda utilizar los métodos de la clase "celular" para realizar las acciones solicitadas.</p><hr><h3><b>✏️ </b><b><u>Actividad Empresa de celulares 2</u></b></h3><p>Tomando como referencia el ejercicio anterior crear una nueva clase para celulares de alta gama que <b>extienda </b>de la clase anterior y le agregue un atributo de una cámara más.&nbsp;</p><p>Tu tarea es crear dos instancias de la clase "<b>celularAltaGama</b>" con sus respectivos datos y una vez creados los celulares, deberás realizar las siguientes acciones:</p><p>a) Mostrar en pantalla la información de los celulares, agregando la cámara extra.&nbsp;</p><blockquote><p>💡 <i>Pongan en común las diferentes formas de llegar al mismo resultado. ¿Hay alguna que les resulte óptima?</i></p></blockquote></div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

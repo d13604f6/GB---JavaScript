@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>Egg App</title><title>Egg App :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="sepia" data-font="sans-serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://app.egg.live/content/step/EYNzLaAR9CWZOUJmzgHvs">
+    <span>app.egg.live</span>
+    <span>/content/step/EYNzLaAR9CWZOUJmzgHvs</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Egg App</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">4-5 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div><header><h2>Práctica: Arrays</h2><nav></nav></header><p>Los Arrays permiten almacenar y acceder a múltiples valores en una única variable. Esta capacidad de agrupar datos te proporciona una herramienta poderosa para trabajar con conjuntos de información, ya sea una lista de nombres, puntuaciones, o cualquier otro tipo de datos.</p><p>¡Comencemos esta emocionante travesía de manipulación de datos en JavaScript! 🚀</p><p>Vamos a practicar con el manejo de una colección de objetos.</p><hr><h3><b>✏️ </b><b><u>Actividad Modificando Arrays</u></b></h3><p>Utilizando el método pop() y shift(), crear un array de más de 2 elementos y aplicar primero el método pop() y luego el método shift().</p><p>En la pantalla deberás mostrar cómo está formado el array original, qué elemento sacaste y cómo quedó el array final.</p><p>Así:</p><pre><code><code>Mi array original es: 10,20,30,40,50
+El elemento que sacamos es: 50
+Mi array final es: 10,20,30,40
+</code></code></pre><blockquote><p>💡 Para mostrarlo en pantalla puedes usar un código similar al siguiente&nbsp;</p></blockquote><pre><code><code>“document.write( "Mi array original es: "+"&lt;b&gt;" + miArray +"&lt;/b&gt;" + "&lt;br&gt;" + "&lt;br&gt;");”</code></code></pre><hr><h3><b>✏️ </b><b><u>Actividad Slice</u></b></h3><p>En este ejercicio, trabajarás con un array de números llamado numeros. Tu objetivo es realizar diferentes operaciones utilizando el método slice() para obtener diferentes porciones del array original.&nbsp;</p><p>Asegúrate de completar cada parte del ejercicio siguiendo las instrucciones dadas.</p><blockquote><p>💡Resuelve cada parte del ejercicio utilizando el método <b>slice() </b>correctamente para obtener los segmentos del array solicitados. Recuerda que el método <b>slice()</b> no modifica el array original y devuelve una porción del mismo.</p></blockquote><pre><code><code>// Array de números
+let numeros = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+</code></code></pre><pre><code><code>// Parte 1:
+// Crea una nueva variable llamada "primerosTres" que contenga los tres primeros elementos del array "numeros".
+// Luego, muestra "primerosTres" en la consola.
+</code></code></pre><pre><code><code>// Parte 2:
+// Crea una nueva variable llamada "ultimosCuatro" que contenga los cuatro últimos elementos del array "numeros".
+// Luego, muestra "ultimosCuatro" en la consola.
+</code></code></pre><pre><code><code>// Parte 3:
+// Crea una nueva variable llamada "segmentoCentral" que contenga los elementos desde el índice 3 hasta el índice 7 (ambos inclusive) del array "numeros".
+// Luego, muestra "segmentoCentral" en la consola.
+</code></code></pre><pre><code><code>// Parte 4:
+// Crea una nueva variable llamada "segmentoSaltado" que contenga cada segundo elemento del array "numeros", empezando desde el segundo elemento.
+// Luego, muestra "segmentoSaltado" en la consola.
+</code></code></pre><pre><code><code>// Parte 5:
+// Crea una nueva variable llamada "arrayOriginal" que contenga una copia exacta del array "numeros" utilizando "slice()".
+// Luego, modifica el valor de uno de los elementos en "arrayOriginal" y muestra ambos arrays ("numeros" y "arrayOriginal") en la consola para verificar que el cambio solo se refleja en "arrayOriginal".
+</code></code></pre><hr><h3><b>✏️ </b><b><u>Actividad&nbsp; Estudiantes (filter)</u></b></h3><p>Supongamos que tienes un arreglo de objetos que representa una lista de estudiantes con la siguiente estructura:</p><p><img src="https://images.ctfassets.net/lg4qnzuw6s7g/xLeq7caGHxm7db8vmjFoq/714150473dbea69fda1d67bf5cb63800/Screenshot_5.png" alt="Screenshot 5"></p><p>Tu tarea es utilizar filter() para crear un nuevo arreglo llamado estudiantesAprobados que contenga solo a aquellos estudiantes que hayan aprobado (es decir, cuyo promedio sea igual o mayor a 7.0).</p><p>Después, debes imprimir en la consola la lista de estudiantes aprobados junto con su edad y promedio.</p><p>Aquí tienes un esqueleto del código para que lo completes:</p><p><img src="https://images.ctfassets.net/lg4qnzuw6s7g/ntlqyyRXKwMch7Z3HlcAO/74ea822c8c78c154a1d54fef09227576/Screenshot_6.png" alt="Screenshot 6"></p><hr><h3><b>✏️</b><b><u>Actividad Productos Online (forEach)</u></b></h3><p>Supongamos que tienes un arreglo de objetos que representa una lista de productos en una tienda en línea, con la siguiente estructura:</p><p><img src="https://images.ctfassets.net/lg4qnzuw6s7g/17H1o04nXzTU6z8zHhzcQo/085632ee53e26143a9cfa363d65d1f80/Screenshot_7.png" alt="Screenshot 7"></p><p>Tu tarea es utilizar forEach() para iterar sobre cada producto en el arreglo y realizar las siguientes acciones:</p><ol><li><p>Calcular el valor total de cada producto multiplicando su precio por su cantidad en stock (precio * stock).</p></li><li><p>Si el valor total del producto es mayor o igual a $100, agregar una propiedad llamada descuento y asignarle el valor del 10% del valor total.</p></li><li><p>Imprimir en la consola el nombre del producto, su precio, su cantidad en stock, y si tiene un descuento, mostrar también el monto del descuento.</p></li></ol><p>Aquí tienes el esqueleto del código para que lo completes:</p><p><img src="https://images.ctfassets.net/lg4qnzuw6s7g/1MVryu07STSjNraEz7pWx6/fe6aadb076f410a1806a9e218d5ba63b/Screenshot_8.png" alt="Screenshot 8"></p></div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

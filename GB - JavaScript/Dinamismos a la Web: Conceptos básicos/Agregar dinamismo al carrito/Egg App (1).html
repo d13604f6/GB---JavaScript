@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>Egg App</title><title>Egg App :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="sepia" data-font="sans-serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://app.egg.live/content/step/6ldVIbuPR7zI5rwFWy8E7q">
+    <span>app.egg.live</span>
+    <span>/content/step/6ldVIbuPR7zI5rwFWy8E7q</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Egg App</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">7-9 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div><header><h2>Agregar dinamismo al carrito</h2><nav></nav></header><p>En este paso, nos enfocaremos en rellenar dinámicamente el carrito de compras en la página, como así también realizar el resumen del pedido.</p><h2><b>✏️</b><b><u>Actividad resumen del pedido</u></b></h2><h3><b>1. Creando la etiqueta &lt;script&gt;</b></h3><p>Después del footer y antes del cierre del body, escriba una etiqueta <b>&lt;script&gt;&lt;/script&gt;</b>. La etiqueta<b> &lt;script&gt; </b>en un archivo html se utiliza para incorporar o referenciar código JavaScript, que es esencial para añadir interactividad, funcionalidad y comportamientos dinámicos en una página web.</p><pre><code><code>&lt;body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;footer&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/footer&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></code></pre><h3><b>2. JavaScript</b></h3><h4><b>a- Creación del carrito</b></h4><p>A continuación, dentro de la etiqueta &lt;script&gt;&lt;/script&gt;, crearemos el carrito (por ahora estático):</p><pre><code><code>const cart = [
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: "MacBook Pro 13'4",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MacBook Pro 13'4 con 8GB de RAM y 512GB de almacenamiento",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;price: 750000,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image: "../assets/mock1.jpg",
+&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: "MacBook Pro 15'4",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MacBook Pro 15'4 con 8GB de RAM y 512GB de almacenamiento",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;price: 800000,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image: " ../assets/mock1.jpg",
+&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: "Lenovo",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: "Lenovo 13'4 con 8GB de RAM y 256GB de almacenamiento",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;price: 75000,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image: " ../assets/mock1.jpg",
+&nbsp;&nbsp;&nbsp;&nbsp;},
+];
+</code></code></pre><ul><li><p>cart es un array de objetos, los cuales representan cada producto.</p></li><li><p>Cada producto tiene 5 atributos:</p><ul><li><p><b>title</b>: Título.</p></li><li><p><b>description</b>: Descripción.</p></li><li><p><b>price</b>: Precio.</p></li><li><p><b>quantity</b>: Cantidad en el carrito.</p></li><li><p><b>image</b>: URL de la imagen.</p></li></ul></li></ul><h4><b>b- Mostrar el carrito a la página</b></h4><p>Abajo del array cart, crearemos una función para mostrar cada producto en la página.</p><blockquote><p><b>Como vimos en la teoría, hay una propiedad de los elementos del DOM llamada innerHTML, la cual modifica el HTML y no es una buena práctica usarla. Por lo que tendremos que crear cada elemento y agregarle sus propiedades.</b></p></blockquote><p>La estructura HTML que necesitamos por cada producto es:</p><pre><code><code>&lt;article class="product-cart"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="URL de la imagen" alt=""&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="middle"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="info"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong class="title"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Título
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/strong&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="description"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Descripción
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="number" min="1"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong class="price"&gt;Precio&lt;/strong&gt;
+&lt;/article&gt;
+</code></code></pre><p>La función luce algo como lo siguiente:</p><pre><code><code>function populate() {
+&nbsp;&nbsp;&nbsp;&nbsp;const cartContainer = document.querySelector(".cart-container");
+&nbsp;&nbsp;&nbsp;&nbsp;if (!cartContainer) return console.log("Error");
+&nbsp;&nbsp;&nbsp;&nbsp;const productContainer = document.createElement("div");
+&nbsp;&nbsp;&nbsp;&nbsp;productContainer.classList.add("card", "products");
+&nbsp;&nbsp;&nbsp;&nbsp;cart.forEach((product) =&gt; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productElement = document.createElement("article");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productElement.classList.add("product-cart");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productImage = document.createElement("img");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productImage.src = product.image;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productImage.alt = product.title;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productMiddle = document.createElement("div");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productMiddle.classList.add("middle");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productInfo = document.createElement("div");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productInfo.classList.add("info");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productTitle = document.createElement("strong");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productTitle.classList.add("title");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productTitle.textContent = product.title;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productDescription = document.createElement("span");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productDescription.classList.add("description");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productDescription.textContent = product.description;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productInput = document.createElement("input");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productInput.type = "number";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productInput.value = product.quantity;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productInput.min = 1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productPrice = document.createElement("strong");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productPrice.classList.add("price");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productPrice.textContent = `AR$ ${formatPrice(product.price)}`;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productInfo.appendChild(productTitle);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productInfo.appendChild(productDescription);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productMiddle.appendChild(productInfo);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productMiddle.appendChild(productInput);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productElement.appendChild(productImage);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productElement.appendChild(productMiddle);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productElement.appendChild(productPrice);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productContainer.appendChild(productElement);
+&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;cartContainer.insertAdjacentElement("afterbegin", productContainer);
+&nbsp;&nbsp;&nbsp;&nbsp;const priceElement = document.querySelector(".resume .price");
+&nbsp;&nbsp;&nbsp;&nbsp;priceElement.textContent = formatPrice(
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cart.reduce(
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(total, { price, quantity }) =&gt; total + price * quantity,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;);
+}
+function formatPrice(price) {
+&nbsp;&nbsp;&nbsp;&nbsp;return new Intl.NumberFormat("es-AR", {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style: "currency",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currency: "ARS",
+&nbsp;&nbsp;&nbsp;&nbsp;}).format(price);
+}
+document.addEventListener("DOMContentLoaded", populate);
+</code></code></pre><h2><b> Explicación</b></h2><h3><b><u>1. Función populate</u></b></h3><p>Esta función crea y muestra los elementos del carrito.</p><p><b>Seleccionar el Contenedor:</b></p><ul><li><p>Inicialmente, la función busca y selecciona el contenedor del carrito en el DOM, utilizando <b>document.querySelector(".cart-container").</b></p></li><li><p>Este paso es crucial para asegurarse de que tenemos el lugar correcto en el DOM donde se añadirán los elementos del carrito.</p></li></ul><p><b>Crear Elementos del Producto:</b></p><ul><li><p>Por cada objeto de producto en el array <b>cart</b>, la función genera un nuevo elemento article.</p></li><li><p>Este article incluirá varios sub-elementos, como una imagen del producto (img), que representa visualmente el artículo.</p></li><li><p>Además, se incluyen elementos para mostrar información detallada del producto, como el título y la descripción.</p></li></ul><p><b>Mostrar Precio y Descripción:</b></p><ul><li><p>Cada producto en el carrito tiene su título y descripción claramente mostrados, facilitando la identificación por parte del usuario.</p></li><li><p>Se utiliza una función de formato para mostrar el precio de cada producto de una manera legible y localizada, lo que mejora la experiencia del usuario al proporcionar claridad en los costos. (Más info al final del paso)</p></li></ul><p><b>Añadir al DOM:</b></p><ul><li><p>Una vez que cada producto ha sido creado y configurado con la información necesaria, se agrega al contenedor del carrito en el DOM.</p></li><li><p>Este paso es esencial para que los productos sean visibles en la página web, permitiendo a los usuarios ver los artículos que han agregado a su carrito.</p></li></ul><h3><b><u>2. Función formatPrice</u></b></h3><p>Esta función formatea el precio en el formato de moneda local, en este caso, el peso argentino (ARS).</p><h3><b><u>3. Cálculo del Precio Total</u></b></h3><p>Calcula el precio total de los productos en el carrito, sumando el precio de cada producto multiplicado por su cantidad. Se utiliza el método <i>reduce</i> de los arrays, el cual habrá más información al final de este paso.</p><h3><b><u>4. document.addEventListener</u></b></h3><p>document.addEventListener("DOMContentLoaded", populate); asegura que el script se ejecute después de que el contenido del DOM esté completamente cargado. Este enfoque es útil para seleccionar elementos del DOM y verificar que estén definidos correctamente.</p><p>La función addEventListener la estudiaremos en profundidad más adelante.</p><h4><b>Tu carrito debería verse así:</b></h4><p><img src="https://images.ctfassets.net/lg4qnzuw6s7g/7u3QdwfBBqLbl9VAVpWUmJ/5c79267d4a6e024015d48ed004717c72/Screenshot_13.png" alt="Screenshot 13"></p><hr><h3><b><u>🧰Material Complementario</u></b></h3><p>Te proporcionamos accesos a recursos de aprendizaje opcionales que te brindarán la oportunidad de profundizar en diversos aspectos:</p><ul><li><p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat" target="_blank" rel="noopener noreferrer" title="Format Price">Format Price</a></p></li><li><p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener noreferrer" title="Método reduce">Método reduce</a></p></li></ul><hr><p><b>⏭️ En el paso siguiente</b> conocerás cómo manejar eventos en JS.</p></div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

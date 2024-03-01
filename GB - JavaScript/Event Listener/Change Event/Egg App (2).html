@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>Egg App</title><title>Egg App :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="sepia" data-font="sans-serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://app.egg.live/content/step/7uNWiKhBs79JHoMvQ8MdB6">
+    <span>app.egg.live</span>
+    <span>/content/step/7uNWiKhBs79JHoMvQ8MdB6</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Egg App</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">6-8 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div><header><h2>Change Event</h2><nav></nav></header><p>En esta sección nos enfocaremos en el evento change de cada producto (modificación del stock), para ir actualizando el total del pedido.</p><p>El evento change se utiliza comúnmente en conjunción con Event Listeners para detectar cambios en el valor de un elemento de formulario, como un campo de entrada (&lt;input&gt;), un elemento de selección (&lt;select&gt;), o un área de texto (&lt;textarea&gt;).</p><p>Cuando un usuario interactúa con un elemento de formulario y realiza algún cambio, como seleccionar una opción diferente en un menú desplegable o ingresar texto en un campo de entrada, se dispara el evento change. Este evento captura la acción de cambio y proporciona una oportunidad para ejecutar funciones o realizar acciones específicas en respuesta a dicho cambio.</p><hr><h2><b><u>✏️Actividad Validación y cálculo del precio</u></b></h2><h3><b><u>1- Añadir el addEventListener</u></b></h3><p>En la función populate, dentro del bucle del carrito, hay una variable que representa la cantidad de ese producto que existe en el carrito.&nbsp;</p><p>La variable se llama productInput.&nbsp;</p><p>Agrega el siguiente listener después de declararla. Éste es el elemento al cual le vamos a aplicar el listener.</p><pre><code><code>//Start Código existente
+const productInput = document.createElement("input");
+productInput.type = "number";
+productInput.value = product.quantity;
+productInput.min = 1;
+//End Código existente
+// Agregar `addEventListener`
+productInput.addEventListener("change", (event) =&gt; {
+&nbsp;&nbsp;&nbsp;&nbsp;const value = event.target.value;
+&nbsp;&nbsp;&nbsp;&nbsp;const index = cart.findIndex(
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({ title }) =&gt; product.title === title
+&nbsp;&nbsp;&nbsp;&nbsp;);
+&nbsp;&nbsp;&nbsp;&nbsp;if (index &lt; 0) return console.log("Error");
+&nbsp;&nbsp;&nbsp;&nbsp;cart[index].quantity = value;
+&nbsp;&nbsp;&nbsp;&nbsp;renderTotalPrice();
+});
+</code></code></pre><h3><b><u>2-&nbsp; Asignación de un Controlador de Eventos:</u></b></h3><ul><li><p><b>productInput.addEventListener("change", (event) =&gt; {...}):</b> Este código añade un controlador de eventos al elemento productInput. El evento que se está escuchando es el change, que ocurre, por ejemplo, cuando un usuario cambia el valor en un campo de entrada (input) y luego sale del campo (en este caso es un campo numérico para la cantidad del producto).</p></li></ul><h3><b><u>&nbsp;3- Dentro del Controlador de Eventos:</u></b></h3><ul><li><p><b>const value = event.target.value:</b> Cuando se produce un cambio, event.target se refiere al elemento específico que desencadenó el evento, y value es el valor actual del elemento de entrada después del cambio.</p></li></ul><h3><b><u>4- Buscar el Producto en el Carrito:</u></b></h3><ul><li><p><b>const index = cart.findIndex(({ title }) =&gt; product.title === title);:</b> Esta línea busca en el array cart para encontrar el índice del producto que se está modificando. Utiliza findIndex para buscar en cada objeto del carrito (cart) y compara el título del producto actual (product.title) con cada título en el carrito. El índice del producto correspondiente se almacena en index.</p></li></ul><h3><b><u>5- Validación y Actualización de la Cantidad:</u></b></h3><ul><li><p>Si index &lt; 0, significa que el producto no se encontró en el carrito, y en este caso, se registra un error en la consola y se sale de la función.</p></li><li><p>Si se encuentra el producto (index &gt;= 0), se actualiza la propiedad quantity del producto en el carrito con el nuevo valor obtenido del campo de entrada.</p></li></ul><p>Nótese que al final se llama a la función renderTotalPrice. Esto es simplemente mover la lógica del renderizado del total a una función y llamarla. Quedaría de la siguiente manera:</p><pre><code><code> function renderTotalPrice() {
+&nbsp;&nbsp;&nbsp;&nbsp;const priceElement = document.querySelector(".resume .price");
+&nbsp;&nbsp;&nbsp;&nbsp;priceElement.textContent = formatPrice(
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cart.reduce(
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(total, { price, quantity }) =&gt; total + price * quantity,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;);
+}
+</code></code></pre><p>el código completo quedaría similar a esto:</p><pre><code><code>const cart = [...]
+document.addEventListener("DOMContentLoaded", populate);
+function populate() {
+&nbsp;&nbsp;const cartContainer = document.querySelector(".cart-container");
+&nbsp;&nbsp;document.querySelector(".products")?.remove();
+&nbsp;&nbsp;if (!cartContainer) return console.log("Error");
+&nbsp;&nbsp;const productContainer = document.createElement("div");
+&nbsp;&nbsp;productContainer.classList.add("card", "products");
+&nbsp;&nbsp;cart.forEach((product) =&gt; {
+&nbsp;&nbsp;&nbsp;&nbsp;const productElement = document.createElement("article");
+&nbsp;&nbsp;&nbsp;&nbsp;productElement.classList.add("product-cart");
+&nbsp;&nbsp;&nbsp;&nbsp;const productImage = document.createElement("img");
+&nbsp;&nbsp;&nbsp;&nbsp;productImage.src = product.image;
+&nbsp;&nbsp;&nbsp;&nbsp;productImage.alt = product.title;
+&nbsp;&nbsp;&nbsp;&nbsp;const productMiddle = document.createElement("div");
+&nbsp;&nbsp;&nbsp;&nbsp;productMiddle.classList.add("middle");
+&nbsp;&nbsp;&nbsp;&nbsp;const productInfo = document.createElement("div");
+&nbsp;&nbsp;&nbsp;&nbsp;productInfo.classList.add("info");
+&nbsp;&nbsp;&nbsp;&nbsp;const productTitle = document.createElement("strong");
+&nbsp;&nbsp;&nbsp;&nbsp;productTitle.classList.add("title");
+&nbsp;&nbsp;&nbsp;&nbsp;productTitle.textContent = product.title;
+&nbsp;&nbsp;&nbsp;&nbsp;const productDescription = document.createElement("span");
+&nbsp;&nbsp;&nbsp;&nbsp;productDescription.classList.add("description");
+&nbsp;&nbsp;&nbsp;&nbsp;productDescription.textContent = product.description;
+&nbsp;&nbsp;&nbsp;&nbsp;const productInput = document.createElement("input");
+&nbsp;&nbsp;&nbsp;&nbsp;productInput.type = "number";
+&nbsp;&nbsp;&nbsp;&nbsp;productInput.value = product.quantity;
+&nbsp;&nbsp;&nbsp;&nbsp;productInput.min = 1;
+&nbsp;&nbsp;&nbsp;&nbsp;productInput.addEventListener("change", (event) =&gt; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const value = event.target.value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const index = cart.findIndex(({ title }) =&gt; product.title === title);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (index &lt; 0) return console.log("Error");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cart[index].quantity = value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderTotalPrice();
+&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;const productPrice = document.createElement("strong");
+&nbsp;&nbsp;&nbsp;&nbsp;productPrice.classList.add("price");
+&nbsp;&nbsp;&nbsp;&nbsp;productPrice.textContent = `AR$ ${formatPrice(product.price)}`;
+&nbsp;&nbsp;&nbsp;&nbsp;productInfo.appendChild(productTitle);
+&nbsp;&nbsp;&nbsp;&nbsp;productInfo.appendChild(productDescription);
+&nbsp;&nbsp;&nbsp;&nbsp;productMiddle.appendChild(productInfo);
+&nbsp;&nbsp;&nbsp;&nbsp;productMiddle.appendChild(productInput);
+&nbsp;&nbsp;&nbsp;&nbsp;productElement.appendChild(productImage);
+&nbsp;&nbsp;&nbsp;&nbsp;productElement.appendChild(productMiddle);
+&nbsp;&nbsp;&nbsp;&nbsp;productElement.appendChild(productPrice);
+&nbsp;&nbsp;&nbsp;&nbsp;productContainer.appendChild(productElement);
+&nbsp;&nbsp;});
+&nbsp;&nbsp;cartContainer.insertAdjacentElement("afterbegin", productContainer);
+&nbsp;&nbsp;renderTotalPrice();
+}
+function renderTotalPrice() {
+&nbsp;&nbsp;const priceElement = document.querySelector(".resume .price");
+&nbsp;&nbsp;priceElement.textContent = formatPrice(
+&nbsp;&nbsp;&nbsp;&nbsp;cart.reduce((total, { price, quantity }) =&gt; total + price * quantity, 0)
+&nbsp;&nbsp;);
+}
+function formatPrice(price) {
+&nbsp;&nbsp;return new Intl.NumberFormat("es-AR", {
+&nbsp;&nbsp;&nbsp;&nbsp;style: "currency",
+&nbsp;&nbsp;&nbsp;&nbsp;currency: "ARS",
+&nbsp;&nbsp;}).format(price);
+}
+</code></code></pre><hr><p><b>⏭️ En el paso siguiente</b> podrás centrarte en el comportamiento de un evento muy utilizado, el evento “click”.</p><hr></div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
